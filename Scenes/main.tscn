@@ -54,6 +54,7 @@ script = ExtResource("1_jjgbg")
 mesh = SubResource("CapsuleMesh_8gbba")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5063, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]

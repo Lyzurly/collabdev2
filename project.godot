@@ -15,6 +15,10 @@ run/main_scene="uid://57e1m1qmfecs"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MouseCanvas="*res://Scripts/mouse_canvas.gd"
+
 [input]
 
 Forward={

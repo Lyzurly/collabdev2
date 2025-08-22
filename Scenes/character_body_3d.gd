@@ -1,14 +1,18 @@
 extends CharacterBody3D
 
+@onready var camera: Camera3D = %Camera3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
 
-var mouse_pos: Vector2
+const SPEED: float = 15.
+const JUMP_VELOCITY: float = 4.5
 
+const ROTATE_FACTOR: float = 500.
+const ROTATE_SPEED: float = 300.
+const ROTATE_CLAMP: float = 1.5
+#const ROTATE_VERTICAL
 
 func _physics_process(delta: float) -> void:
-	mouse_pos = get_viewport().get_mouse_posi
+	_handle_rotation()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -17,8 +21,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("Left", "Right", "Forward", "Backward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -30,5 +32,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-	print(mouse_pos)
 	
+func _handle_rotation() -> void:
+	var vertical_rotation_raw: float = deg_to_rad(-MouseCanvas.mouse_relative.y/ROTATE_FACTOR * ROTATE_SPEED)
+	var horizontal_rotation_raw: float = deg_to_rad(-MouseCanvas.mouse_relative.x/ROTATE_FACTOR * ROTATE_SPEED)
+	
+	var horizontal_rotation: float = horizontal_rotation_raw
+	var vertical_rotation: float = vertical_rotation_raw
+	
+	global_rotation.y = horizontal_rotation #Horizontal rotation
+	camera.global_rotation.x = clamp(vertical_rotation, #Vertical rotation (camera)
+	
+	print(vertical_rotation)
