@@ -71,7 +71,7 @@ shape = SubResource("WorldBoundaryShape3D_kry3j")
 [node name="Test_Level" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Test_Level"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 13.3364, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 20.3364, 0, -9)
 mesh = SubResource("PlaneMesh_21xkr")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_hptm8")
@@ -99,3 +99,7 @@ transform = Transform3D(4.37114e-08, 1, -1.19209e-07, 1, -4.37114e-08, 0, -3.552
 mesh = SubResource("PlaneMesh_21xkr")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_hptm8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133, 0, -1)
+size = Vector3(1, 1, 3)

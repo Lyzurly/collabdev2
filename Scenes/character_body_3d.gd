@@ -40,7 +40,7 @@ func _handle_rotation() -> void:
 	var horizontal_rotation: float = horizontal_rotation_raw
 	var vertical_rotation: float = vertical_rotation_raw
 	
-	global_rotation.y = horizontal_rotation #Horizontal rotation
+	global_rotation.y = horizontal_rotation #Horizontal rotation	
 	camera.global_rotation.x = clamp(vertical_rotation, #Vertical rotation (camera)
 	
 	print(vertical_rotation)
